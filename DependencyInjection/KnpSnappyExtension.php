@@ -25,7 +25,7 @@ class KnpSnappyExtension extends Extension
             $loader->load('pdf.xml');
             $container->setParameter('knp_snappy.pdf.binary', $config['pdf']['binary']);
             $container->setParameter('knp_snappy.pdf.options', $config['pdf']['options']);
-            $container->setParameter('knp_snappy.pdf.env', $config['pdf']['env']);
+            $container->setParameter('knp_snappy.pdf.env', empty($config['pdf']['env']) ? null : $config['pdf']['env']);
             if (!empty($config['temporary_folder'])) {
                 $container->findDefinition('knp_snappy.pdf.internal_generator')
                     ->addMethodCall('setTemporaryFolder', array($config['temporary_folder']));
@@ -36,7 +36,7 @@ class KnpSnappyExtension extends Extension
             $loader->load('image.xml');
             $container->setParameter('knp_snappy.image.binary', $config['image']['binary']);
             $container->setParameter('knp_snappy.image.options', $config['image']['options']);
-            $container->setParameter('knp_snappy.image.env', $config['image']['env']);
+            $container->setParameter('knp_snappy.image.env', empty($config['image']['env']) ? null : $config['image']['env']);
             if (!empty($config['temporary_folder'])) {
                 $container->findDefinition('knp_snappy.image.internal_generator')
                     ->addMethodCall('setTemporaryFolder', array($config['temporary_folder']));
